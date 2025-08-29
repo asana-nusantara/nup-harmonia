@@ -55,9 +55,8 @@
             <div class="text-left bg-blue-50 border-l-4 border-blue-400 p-4 rounded-md">
                 <h3 class="font-bold text-blue-800">Setelah Transfer, Mohon Konfirmasi</h3>
                 <p class="text-sm text-blue-700 mt-1">
-                    Setelah melakukan pembayaran, mohon kirimkan bukti transfer melalui WhatsApp ke tim marketing kami agar NUP Anda dapat segera kami proses. Tim kami juga akan menghubungi Anda dalam 1x24 jam.
+                    Setelah melakukan pembayaran, mohon kirimkan bukti transfer melalui WhatsApp ke tim marketing kami agar NUP Anda dapat segera kami proses.
                 </p>
-                 <!-- [PERUBAHAN] Link WhatsApp diubah ke nomor baru -->
                  <a href="https://wa.me/6285711880101?text=Halo,%20saya%20sudah%20mendaftar%20NUP%20Graha%20Harmonia%20dan%20ingin%20melakukan%20konfirmasi%20pembayaran." target="_blank" class="mt-3 inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg text-sm">
                     Konfirmasi via WhatsApp
                 </a>
@@ -73,6 +72,7 @@
         </footer>
     </div>
 <script>
+    // Fungsi untuk menyalin nomor rekening ke clipboard
     const copyButton = document.getElementById('copyButton');
     const accountNumber = document.getElementById('accountNumber');
     copyButton.addEventListener('click', () => {
@@ -81,6 +81,7 @@
         document.body.appendChild(textArea);
         textArea.select();
         try {
+            // Menggunakan document.execCommand('copy') untuk kompatibilitas
             document.execCommand('copy');
             copyButton.textContent = 'Nomor Berhasil Disalin!';
             setTimeout(() => {
