@@ -21,6 +21,11 @@
         .modal-content {
             transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
         }
+        /* Style baru untuk memastikan modal bisa di-scroll */
+        .modal-scrollable {
+            overflow-y: auto;
+            max-height: 90vh; /* Maksimal tinggi modal adalah 90% dari tinggi layar */
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -63,7 +68,6 @@
         <section id="form-pemesanan" class="bg-white p-8 md:p-12 rounded-2xl shadow-2xl max-w-3xl mx-auto border border-slate-200">
             <h2 class="text-3xl font-bold text-center text-slate-900 mb-4">Amankan Posisi Prioritas Anda</h2>
             <p class="text-center text-slate-600 mb-10">Isi data di bawah ini, tim kami akan segera menghubungi Anda untuk proses selanjutnya. Hanya butuh 2 menit.</p>
-            <!-- FORM DIHUBUNGKAN DENGAN ENDPOINT BARU ANDA -->
             <form id="nupForm" action="https://formspree.io/f/xbladvrv" method="POST">
                 <div class="mb-6"><label for="fullName" class="block text-slate-700 text-sm font-bold mb-2">Nama Lengkap</label><input type="text" id="fullName" name="Nama Lengkap" class="shadow-sm appearance-none border border-slate-300 rounded-lg w-full py-3 px-4 text-slate-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gold-accent focus:border-transparent" placeholder="Contoh: Budi Santoso" required></div>
                 <div class="mb-6"><label for="whatsapp" class="block text-slate-700 text-sm font-bold mb-2">Nomor WhatsApp Aktif</label><input type="tel" id="whatsapp" name="Nomor WhatsApp" class="shadow-sm appearance-none border border-slate-300 rounded-lg w-full py-3 px-4 text-slate-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gold-accent focus:border-transparent" placeholder="Contoh: 081234567890" required></div>
@@ -78,8 +82,9 @@
 
 
     <!-- Modal Terima Kasih (Awalnya Tersembunyi) -->
-    <div id="thankYouModal" class="modal-backdrop fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-6 opacity-0 pointer-events-none">
-        <div class="modal-content bg-white max-w-2xl w-full p-8 md:p-12 rounded-2xl shadow-2xl text-center border border-slate-200 transform scale-95 opacity-0">
+    <div id="thankYouModal" class="modal-backdrop fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 opacity-0 pointer-events-none">
+        <!-- PERUBAHAN DI SINI: menambahkan class 'modal-scrollable' -->
+        <div class="modal-content modal-scrollable bg-white max-w-2xl w-full p-8 md:p-10 rounded-2xl shadow-2xl text-center border border-slate-200 transform scale-95 opacity-0">
             <img src="https://i.postimg.cc/P50J5fS7/ASANA.jpg" alt="Logo Asana Graha Nusantara" class="h-10 mx-auto mb-6">
             <div class="mx-auto bg-green-100 rounded-full h-20 w-20 flex items-center justify-center mb-5">
                 <svg class="h-12 w-12 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
@@ -169,7 +174,6 @@
             }
         });
         
-        // Fungsi untuk menyalin nomor rekening
         const copyButton = document.getElementById('copyButton');
         const accountNumber = document.getElementById('accountNumber');
         copyButton.addEventListener('click', () => {
